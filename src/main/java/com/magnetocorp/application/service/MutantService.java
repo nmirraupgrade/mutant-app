@@ -138,7 +138,7 @@ public class MutantService {
      * @return the amount of horizontal occurrences
      */
     private int getNextHorizontalOccurrences(char base, String line, int count) {
-        if (line.toLowerCase().charAt(0) != Character.toLowerCase(base)) {
+        if (line.isEmpty() || line.toLowerCase().charAt(0) != Character.toLowerCase(base)) {
             return count;
         } else {
             return getNextHorizontalOccurrences(base, line.substring(1), count + 1);
@@ -213,7 +213,7 @@ public class MutantService {
      * @return true if the base can be found the amount of times expected, false if that is not possible
      */
     private boolean canMatch(int length, int index) {
-        return length - index > MUTANT_CANDIDATE_OCCURRENCES;
+        return (length - index) + 1 > MUTANT_CANDIDATE_OCCURRENCES;
     }
 
     /**
