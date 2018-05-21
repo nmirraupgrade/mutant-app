@@ -25,6 +25,7 @@ Make a GET call to the following endpoint: http://18.228.26.35:8080/stats, you c
 }
 
 Español:
+
 Para poder ejecutar esta applicacion debera seguir los pasos, dependiendo del escenario
 
 1) Para saber si un ADN pertenece a un mutante
