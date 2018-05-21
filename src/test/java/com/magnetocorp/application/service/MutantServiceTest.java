@@ -82,7 +82,17 @@ public class MutantServiceTest {
         when(repository.findBySequence(validSequence)).thenReturn(Dna.builder().isMutant(true).build());
         Assert.assertTrue(service.isMutant(saved4x4));
 
-        verify(repository, times(5)).save(any());
+        String[] human4x4 = {"TCAC", "TTTA", "AATT", "CGTA"};
+        validSequence = "TCACTTTAAATTCGTA";
+        when(repository.findBySequence(validSequence)).thenReturn(null);
+        Assert.assertFalse(service.isMutant(human4x4));
+
+        String[] mutant4x4 = {"AAAA", "TTTC", "CCCC", "ACTG"};
+        validSequence = "AAAATTTCCCCC";
+        when(repository.findBySequence(validSequence)).thenReturn(null);
+        Assert.assertTrue(service.isMutant(mutant4x4));
+
+        verify(repository, times(7)).save(any());
     }
     
     @Test
